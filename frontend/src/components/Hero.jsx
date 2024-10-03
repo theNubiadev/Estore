@@ -1,5 +1,5 @@
 import React from "react";
-import falzAgbada from '../assets/falzAgbada1.jpg'
+import falzAgbada from '../assets/falzagbada1.jpg'
 function Hero() {
   return (
     <div className="flex flex-col sm:flex-row border border-gray-400">
