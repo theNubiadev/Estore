@@ -11,7 +11,7 @@ function Hero() {
           </div>
           <h2 className="text-3xl sm:py-3 lg:text-5xl leading-relaxed">
             {" "}
-          Check Out Our Latest  Arrivals
+          Check Out Our Latest Arrivals
           </h2>
           <div className="flex items-center gap-2">
             <p className=" font-semibold text-sm md:text-base">SHOP NOW</p>
@@ -19,9 +19,7 @@ function Hero() {
           </div>
         </div>
       </div>
-      
         <img src={falzAgbada} className="w-full sm:w-1/2" alt="" />
-
     </div>
   );
 }
