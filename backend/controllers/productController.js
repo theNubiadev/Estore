@@ -48,7 +48,7 @@ const addProduct = async (req, res) => {
   }
 };
 // logic to list product
-const listProduct = async (req, res) => {
+const listProducts = async (req, res) => {
     try {
         const products = await productModel.find({});
         res.json({success: true, products})
@@ -81,4 +81,4 @@ const singleProduct = async (req, res) => {
     }
 };
 
-export default { addProduct, listProduct, removeProduct, singleProduct };
+export  { addProduct, listProducts, removeProduct, singleProduct };
