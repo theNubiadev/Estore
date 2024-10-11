@@ -1,12 +1,9 @@
-import mongoose from "mongoose";
+import mongoose from "mongoose"
 
 const connectDB = async () => {
             mongoose.connection.on('connected', () => {
                 console.log("DB connected");
-            })
-            
+            })  ; 
         await mongoose.connect(`${process.env.MONGO_URL}/estore`);
-
-
-
-export default connectDB;
+        }
+export default connectDB
