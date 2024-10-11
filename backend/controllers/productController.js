@@ -5,7 +5,7 @@ import productModel from '../models/productsModel.js'
 // logic to add product
 const addProduct = async (req, res) => {
   try {
-    const { name, description, price, category, sizes, bestSeller } = req.body;
+    const { name, description, price, category,subCategory, sizes, bestSeller } = req.body;
 
     const image1 = req.files.image1 && req.files.image1[0];
     const image2 = req.files.image2 && req.files.image2[0];
@@ -35,7 +35,7 @@ const addProduct = async (req, res) => {
         
         const product = new productModel(productData);
         await product.save()
-    console.log(name, description, price, category, bestSeller, sizes);
+    console.log(name, description, price, category,subCategory, bestSeller, sizes);
     // console.log(image1, image2, image3, image4);
         console.log(images)
         console.log(imagesUrl)
@@ -61,7 +61,7 @@ const listProducts = async (req, res) => {
 // logic to remove product
 const removeProduct = async (req, res) => {
     try {
-        await productModel.findByIdAndDelete(req-body.id)
+        await productModel.findByIdAndDelete(req.body.id)
         res.json({success: true, message: 'Product Removed'})
     } catch (error) {
         console.log(error);

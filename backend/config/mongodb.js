@@ -5,8 +5,8 @@ const connectDB = async () => {
                 console.log("DB connected");
             })
             
-        await mongoose.connect(`${process.env.MONGO_URL}/estore`)
+        await mongoose.connect(`${process.env.MONGO_URL}/estore`);
 
-}
+
 
 export default connectDB;
