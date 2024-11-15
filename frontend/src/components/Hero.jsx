@@ -1,4 +1,4 @@
-import React from "react";
+
 import falzAgbada from '../assets/falzagbada1.jpg'
 function Hero() {
   return (
@@ -7,14 +7,14 @@ function Hero() {
         <div className="text-[#414141]">
           <div className="flex items-center gap-2 ">
             <p className="w-8 md:w-11 h-[2px] bg-[#414141]"></p>
-            <p className="font-medium text-sm md:text-base">Wanna Be A Yoruba Demon</p>
+            <p className="font-medium text-sm text-poppins md:text-base">Wanna Be A Yoruba Demon</p>
           </div>
-          <h2 className="text-3xl sm:py-3 lg:text-5xl leading-relaxed">
+          <h2 className="text-3xl sm:py-3 lg:text-5xl text-poppins leading-relaxed">
             {" "}
           Check Out Our Latest Arrivals
           </h2>
           <div className="flex items-center gap-2">
-            <p className=" font-semibold text-sm md:text-base">SHOP NOW</p>
+            <p className=" font-semibold text-sm md:text-base">Shop Now</p>
             <p className="w-8 md:w-11 h-[1px] bg-[#414141]"></p>
           </div>
         </div>
