@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
 import { StarHalfIcon, StarIcon } from "lucide-react";
@@ -60,7 +60,7 @@ function Product() {
             <p className="pl-2">(122)</p>
           </div>
           <p className="mt-5 text-3xl font-medium">
-            {} {productData.price}
+            {}{currency} {productData.price}
           </p>
           <p className="mt-5 text-gray-500 md:w-4/5  ">
             {productData.description}
