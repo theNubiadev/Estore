@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 import { products } from "../assets/assets";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-
+import {GalleryHorizontalEndIcon} from 'lucide-react'
 export const ShopContext = createContext();
 
 function ShopContextProvider(props) {
@@ -16,7 +16,7 @@ function ShopContextProvider(props) {
   const addToCart = async (itemId, size) => {
     let cartData = structuredClone(cartItems);
     if (!size) {
-      toast.error("Select Product Size");
+      toast.error('<GalleryHorizontalEndIcon /> "Select Product Size" ');
       return;
     }
     if (cartData[itemId]) {
