@@ -16,7 +16,7 @@ function ShopContextProvider(props) {
   const addToCart = async (itemId, size) => {
     let cartData = structuredClone(cartItems);
     if (!size) {
-      toast.error('<GalleryHorizontalEndIcon /> "Select Product Size" ');
+      toast.error(<GalleryHorizontalEndIcon /> );
       return;
     }
     if (cartData[itemId]) {
