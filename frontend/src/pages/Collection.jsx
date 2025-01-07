@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import  { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../context/ShopContext";
-import { ArrowDown, Braces } from "lucide-react";
+import { ArrowDown,  } from "lucide-react";
 import Title from "../components/Title";
 import ProductItem from "../components/ProductItem";
 
