@@ -100,8 +100,7 @@ function Product() {
         </div>
         <div className="flex flex-col gap-4 border py-6 px-2 text-sm text-gray-500">
           <p>
-            An ecommerce website is an online platform that displays producst or
-            services for sale
+           No review is available here.
           </p>
           <p>
             An ecommerce website is an online platform that displays producst or
