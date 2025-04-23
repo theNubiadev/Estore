@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import  { useContext, useState } from "react";
 import Logo from "../assets/logo.png";
 import { NavLink, Link } from "react-router-dom";
 import {
@@ -52,6 +52,7 @@ function Navbar() {
           <Link to="/login">
             <UserIcon className="w-5 cursor-pointer" />
           </Link>
+
           <div className="group-hover:block hidden absolute  dropdown-menu right-0 pt-4">
             <div className="flex flex-col gap-2   w-36 py-3 text-center bg-slate-600 text-gray-500 rounded ">
               <p className="cursor-pointer hover:text-black">My Profile</p>

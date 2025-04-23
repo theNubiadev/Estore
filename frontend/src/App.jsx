@@ -1,4 +1,3 @@
-import React from "react";
 import Home from "./pages/Home";
 import Store from "./pages/Store";
 import About from "./pages/About";
