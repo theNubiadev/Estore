@@ -3,8 +3,8 @@ import cors from "cors";
 import "dotenv/config";
 
 import connectDB from "./config/mongodb.js";
-import userRouter from "./routes/userRoute.js";
 import connectCloudinary from "./config/cloudinary.js";
+import userRouter from "./routes/userRoute.js";
 import productRouter from "./routes/productRoute.js";
 
 // App config
@@ -22,7 +22,7 @@ app.use('/api/user', userRouter)
 app.use('/api/product', productRouter)
 
 app.get("/", (req, res) => {
-  res.send("API Workiing");
+  res.send("API Working🌑🚀👩🏿‍🚀🌙 ");
 });
 
-app.listen(port, () => console.log("Server started on PORT :" + port));
+app.listen(port, () => console.log("Server started on PORT " + port));
