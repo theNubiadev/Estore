@@ -75,9 +75,36 @@ const registerUser = async (req, res) => {
 
 // adminLogin
 
+// const adminLogin = async (req, res) => {
+//   try {
+//     const { email, password } = req.body;
+//     if (
+//       email === process.env.ADMIN_EMAIL &&
+//       password === process.env.ADMIN_PASSWORD
+//     ) {
+//       const token = jwt.sign(email + password, process.env.JWT_SECRET);
+//       res.json({ success: true, token });
+//     } else {
+//       res.json({ success: true, message: "Invalid Credentials" });
+//     }
+//   } catch (error) {
+//     console.log(error);
+//     res.json({ success: false, message: error.message });
+//   }
+// };
+
 const adminLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
+
+    // Ensure admin credentials are provided
+    if (!email || !password) {
+      return res.json({
+        success: false,
+        message: "Admin email and password are required",
+      });
+    }
+
     if (
       email === process.env.ADMIN_EMAIL &&
       password === process.env.ADMIN_PASSWORD
@@ -85,12 +112,13 @@ const adminLogin = async (req, res) => {
       const token = jwt.sign(email + password, process.env.JWT_SECRET);
       res.json({ success: true, token });
     } else {
-      res.json({ success: true, message: "Invalid Credentials" });
+      res.json({ success: false, message: "Invalid Credentials" });
     }
   } catch (error) {
     console.log(error);
-    res.json({ success: false, message: error.message });
+    res.json({ success: false, message: "Error occurred during admin login" });
   }
 };
+// adminLogin
 
 export { loginUser, registerUser, adminLogin };
