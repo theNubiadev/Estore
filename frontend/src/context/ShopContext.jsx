@@ -1,22 +1,26 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { products } from "../assets/assets";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import {GalleryHorizontalEndIcon} from 'lucide-react'
+import { GalleryHorizontalEndIcon } from 'lucide-react';
+import axios from 'axios';
 export const ShopContext = createContext();
 
 function ShopContextProvider(props) {
   const currency = "#";
-  const delivery_fee = 10 ;
+  const delivery_fee = 10;
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const [search, setSearch] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+  // const [products, setProducts] = useState({});
+
   const navigate = useNavigate();
 
   const addToCart = async (itemId, size) => {
     let cartData = structuredClone(cartItems);
     if (!size) {
-      toast.error(<GalleryHorizontalEndIcon />  );
+      toast.error(<GalleryHorizontalEndIcon />);
       return;
     }
     if (cartData[itemId]) {
@@ -39,7 +43,10 @@ function ShopContextProvider(props) {
           if (cartItems[items][item] > 0) {
             totalCount += cartItems[items][item];
           }
-        } catch (error) {}
+        } catch (error) {
+          console.log(error);
+
+        }
       }
     }
     return totalCount;
@@ -59,11 +66,27 @@ function ShopContextProvider(props) {
           if (cartItems[items][item] > 0) {
             totalAmount += itemInfo.price * cartItems[items][item];
           }
-        } catch (error) {}
+        } catch (error) {
+          console.log(error);
+
+        }
       }
     }
     return totalAmount;
   };
+
+  const getProductData = async () => {
+    try {
+      const response = await axios.get(backendUrl + '/api/product/list')
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+      //  stopped at 9:28:58
+    }
+  }
+  useEffect(() => {
+    getProductData()
+  }, []);
 
   const value = {
     products,
@@ -79,6 +102,7 @@ function ShopContextProvider(props) {
     updateQuantity,
     getCartAmount,
     navigate,
+    backendUrl,
   };
 
   return (

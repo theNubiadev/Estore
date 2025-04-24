@@ -17,7 +17,6 @@ function Add(token) {
   const [subCategory, setSubCategory] = useState("Full");
   const [bestseller, setBestseller] = useState(false);
   const [sizes, setSizes] = useState([]);
-
   const onSubmitHandler = async (e) => {
       e.preventDefault();
       try {
