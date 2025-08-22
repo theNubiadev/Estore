@@ -10,9 +10,9 @@ function ProductItem({ id, name, image, price, }) {
     <Link className="text-gray-700 cursor-pointer " to={`/products/${id}`}>
       <div className="overflow-hidden">
         <img
-          src={image[0]}
+          src={image}
           className="hover:scale-110 transition ease-in-out "
-          alt=""
+          alt={name}
         />
       
       </div>

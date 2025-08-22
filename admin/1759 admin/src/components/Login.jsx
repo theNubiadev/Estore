@@ -11,10 +11,11 @@ function Login({ setToken }) {
   const onSubmitHandler = async (e) => {
     try {
       e.preventDefault();
-      const response = await axios.post(backendUrl + "/api/user/admin", {
+      const response = await axios.post(backendUrl + "/api/v1/user/admin", {
         email,
         password,
-      });
+      }, 
+    );
 
       if (response.data.success) {
         setToken(response.data.token);

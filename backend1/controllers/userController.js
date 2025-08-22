@@ -9,14 +9,12 @@ const createToken = (id) => {
 // user login
 const loginUser = async (req, res) => {
 //   res.json({msg: ' Login Api working'})
-
   try {
     const { email, password } = req.body;
     const user = await userModel.findOne({ email });
     if (!user) {
       return res.json({ success: false, message: "User doesn't exists" });
     }
-
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (isMatch) {
@@ -27,7 +25,7 @@ const loginUser = async (req, res) => {
     }
   } catch (error) {
     console.log(error);
-    res.json({ success: false, message: "invalid credentials" });
+    res.json({ success: false, message: "ibnvalid credentials" });
   }
 };
 
@@ -79,17 +77,18 @@ const registerUser = async (req, res) => {
 const adminLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
+
     if (
       email === process.env.ADMIN_EMAIL &&
       password === process.env.ADMIN_PASSWORD
     ) {
       const token = jwt.sign(email + password, process.env.JWT_SECRET);
-      res.json({ success: true, token });
+      return res.json({ success: true, token });
     } else {
-      res.json({ success: true, message: "Invalid Credentials" });
+      return res.json({ success: false, message: "Invalid Credentials" });
     }
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.json({ success: false, message: error.message });
   }
 };

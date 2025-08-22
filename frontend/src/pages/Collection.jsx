@@ -11,6 +11,8 @@ function Collection() {
   const [category, setCategory] = useState([]);
   const [subCategory, setSubCategory] = useState([]);
   const [sortType, setSortType] = useState("relevant");
+
+
   const toggleCategory = (e) => {
     if (category.includes(e.target.value)) {
       setCategory((prev) => prev.filter((item) => item !== e.target.value));
@@ -30,8 +32,12 @@ function Collection() {
  
 
   const applyFilter = () => {
+    if (!Array.isArray (products)) {
+      // console.error("applyFilter", products);
+      return [];
+    }
     let productsCopy = products.slice();
-
+    
     if (showSearch && search) {
       productsCopy =
       productsCopy.filter(item =>
@@ -68,10 +74,13 @@ function Collection() {
   };
   useEffect(() => {
     applyFilter();
-  }, [category, subCategory, search, showSearch]);
+  }, [category, subCategory, search, showSearch, products]);
   useEffect(() => {
     sortProducts();
-  }, [sortType]) 
+  }, [sortType]);
+
+
+
   return (
     <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t">
       <div className="min-w-60">

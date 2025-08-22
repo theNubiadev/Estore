@@ -1,9 +1,11 @@
 import { createContext, useEffect, useState } from "react";
-import { products } from "../assets/assets";
+// import { products } from "../assets/assets";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { GalleryHorizontalEndIcon } from 'lucide-react';
 import axios from 'axios';
+
+
 export const ShopContext = createContext();
 
 function ShopContextProvider(props) {
@@ -13,7 +15,8 @@ function ShopContextProvider(props) {
   const [search, setSearch] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   const [cartItems, setCartItems] = useState([]);
-  // const [products, setProducts] = useState({});
+  const [products, setProducts] = useState({});
+  const [token, setToken] = useState('');
 
   const navigate = useNavigate();
 
@@ -45,7 +48,6 @@ function ShopContextProvider(props) {
           }
         } catch (error) {
           console.log(error);
-
         }
       }
     }
@@ -54,7 +56,6 @@ function ShopContextProvider(props) {
   const updateQuantity = async (itemId, size, quantity) => {
     let cartData = structuredClone(cartItems);
     cartData[itemId][size] = quantity;
-
     setCartItems(cartData);
   };
   const getCartAmount = () => {
@@ -68,7 +69,6 @@ function ShopContextProvider(props) {
           }
         } catch (error) {
           console.log(error);
-
         }
       }
     }
@@ -77,10 +77,17 @@ function ShopContextProvider(props) {
 
   const getProductData = async () => {
     try {
-      const response = await axios.get(backendUrl + '/api/product/list')
+      const response = await axios.get(backendUrl + '/api/v1/product/list')
       console.log(response.data);
+      
+      if (response.data.success) {
+        setProducts(response.data.products)
+      } else {
+        toast.error(response.data.message)
+      }
     } catch (error) {
       console.error(error);
+      toast.error(error.message)
       //  stopped at 9:28:58
     }
   }
@@ -103,6 +110,8 @@ function ShopContextProvider(props) {
     getCartAmount,
     navigate,
     backendUrl,
+    setToken,
+    token
   };
 
   return (
